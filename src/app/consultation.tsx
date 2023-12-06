@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import Container from '@/components/PageBuilder/Container'
 import Title from '@/components/PageBuilder/Title'
-import { Text, Touchable, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import Subtitle from '@/components/PageBuilder/Subtitle'
 import DateText from '@/components/PageBuilder/Date'
 import Cards from '@/components/Shared/Cards'
 import { useEffect, useState } from 'react'
-import Paragraph from '@/components/PageBuilder/Text'
 import { useConsultationsEntityContext } from '@/context/ConsultationsEntityContext'
 import { CardsData0, CardsData1, CardsData2 } from '@/data/cards/CardsData'
 import { Link } from 'expo-router'
@@ -25,8 +24,6 @@ export default function Consultation() {
   const card2 = current && CardsData1[current.randomNumbers[1] - 1]
   const card3 = current && CardsData2[current.randomNumbers[2] - 1]
   const cards = current && [card1, card2, card3]
-
-  console.log(card1, card2, card3)
 
   useEffect(() => {
     console.log('current consultatin - ', current)
@@ -87,6 +84,7 @@ export default function Consultation() {
           style={{
             flexDirection: 'row',
             gap: 10,
+            overflow: 'scroll',
           }}
         >
           {cards &&
@@ -115,7 +113,7 @@ export default function Consultation() {
                     }}
                   >
                     <Cards
-                      width={i === currentCard ? 200 : 70}
+                      width={i === currentCard ? 150 : 85}
                       opacity={i === currentCard ? 1 : 0.3}
                       backgroundImage={e.image}
                     />

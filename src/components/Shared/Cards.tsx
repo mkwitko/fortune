@@ -6,11 +6,11 @@ export default function Cards({
   width = 110,
   opacity = 1,
 }: {
-  backgroundImage: string
+  backgroundImage: any
   width?: number
   opacity?: number
 }) {
-  const imagePath = require('./../../data/cards/assets/h01_desejo.jpg')
+  //   const imagePath = require('./../../data/cards/assets/h01_desejo.jpg')
   return (
     <View
       style={{
@@ -28,7 +28,7 @@ export default function Cards({
           borderRadius: 10,
           opacity,
         }}
-        source={imagePath}
+        source={backgroundImage}
         alt=""
       />
     </View>

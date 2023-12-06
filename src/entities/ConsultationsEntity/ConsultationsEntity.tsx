@@ -6,6 +6,7 @@ import { router } from 'expo-router'
 import { RandomNumbers } from '@/services/RandomNumbers'
 import generateUUID from '@/services/GenerateUUID'
 import Consultation from '@/app/consultation'
+import { parseISO } from 'date-fns'
 
 export default class ConsultationsEntity extends CoreEntity {
   constructor() {
@@ -26,7 +27,12 @@ export default class ConsultationsEntity extends CoreEntity {
   makeConsultation = async (data: any) => {
     const uuid = generateUUID()
     const randomNumbers = RandomNumbers().getRandomNumbers(1, 12, 3)
-    const dataToAdd = { ...data, randomNumbers, uuid, createdAt: new Date() }
+    const dataToAdd = {
+      ...data,
+      randomNumbers,
+      uuid,
+      createdAt: parseISO(new Date().toISOString()),
+    }
     router.push('/consultation')
     this.hook.setCurrent(dataToAdd)
     this.setCache(dataToAdd, true, 'currentConsultation')
@@ -38,12 +44,17 @@ export default class ConsultationsEntity extends CoreEntity {
         },
         customId: this.authentication.auth.currentUser?.uid,
       })
+      this.hook.setData(dataToAdd)
     } else {
       this.update({
         data: {
           id: this.authentication.auth.currentUser?.uid,
           consultations: [...this.hook.data.consultations, dataToAdd],
         },
+      })
+      this.hook.setData({
+        ...this.hook.data,
+        consultations: [...this.hook.data.consultations, dataToAdd],
       })
     }
   }

@@ -19,7 +19,6 @@ export default function NewConsult() {
   } = useWalletEntityContext()
 
   const { Consultations } = useConsultationsEntityContext()
-
   const [question, setQuestion] = useState('')
 
   return (

@@ -6,7 +6,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Sol',
     luckyNumber: 0,
-    image: 'r01_sol.jpg',
+    image: require('@/data/cards/assets/r01_sol.jpg'),
     kassivo1: 'A criação de',
     kassivo2: 'Ganhar o respeito por ou de',
     kassivo3: 'Coisas trazidas à vida ou a luz',
@@ -17,7 +17,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Lua',
     luckyNumber: 0,
-    image: 'r02_lua.jpg',
+    image: require('@/data/cards/assets/r02_lua.jpg'),
     kassivo1: 'Os cuidados de',
     kassivo2: 'Sensações causadas por',
     kassivo3: 'Reações',
@@ -28,7 +28,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Marte',
     luckyNumber: 0,
-    image: 'r03_marte.jpg',
+    image: require('@/data/cards/assets/r03_marte.jpg'),
     kassivo1: 'O impulso de',
     kassivo2: 'O confronto de',
     kassivo3: 'Ação',
@@ -39,7 +39,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Vênus',
     luckyNumber: 0,
-    image: 'r04_venus.jpg',
+    image: require('@/data/cards/assets/r04_venus.jpg'),
     kassivo1: 'A atração de',
     kassivo2: 'Prazeres de',
     kassivo3: 'Bons tempos',
@@ -50,7 +50,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Mercúrio',
     luckyNumber: 0,
-    image: 'r05_mercurio.jpg',
+    image: require('@/data/cards/assets/r05_mercurio.jpg'),
     kassivo1: 'O conhecimento de',
     kassivo2: 'Muitos pensamentos sobre',
     kassivo3: 'Muitas palavras',
@@ -61,7 +61,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Urano',
     luckyNumber: 0,
-    image: 'r06_urano.jpg',
+    image: require('@/data/cards/assets/r06_urano.jpg'),
     kassivo1: 'Um exemplo incomun de',
     kassivo2: 'Uma maneira diferente de encarar',
     kassivo3: 'Uma mudança inesperada',
@@ -72,7 +72,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Saturno',
     luckyNumber: 0,
-    image: 'r07_saturno.jpg',
+    image: require('@/data/cards/assets/r07_saturno.jpg'),
     kassivo1: 'A maturidade que traz',
     kassivo2: 'Cuidado com',
     kassivo3: 'Limites impostos',
@@ -83,7 +83,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Júpter',
     luckyNumber: 0,
-    image: 'r08_jupter.jpg',
+    image: require('@/data/cards/assets/r08_jupter.jpg'),
     kassivo1: 'A concessão de',
     kassivo2: 'Bençãos de',
     kassivo3: 'Boa sorte',
@@ -94,7 +94,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Netuno',
     luckyNumber: 0,
-    image: 'r09_netuno.jpg',
+    image: require('@/data/cards/assets/r09_netuno.jpg'),
     kassivo1: 'A idealização de',
     kassivo2: 'Confusão a respeito de',
     kassivo3: 'Sacrifício',
@@ -105,7 +105,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'Plutão',
     luckyNumber: 0,
-    image: 'r10_plutao.jpg',
+    image: require('@/data/cards/assets/r10_plutao.jpg'),
     kassivo1: 'A necessidade de controlar',
     kassivo2: 'Uma obssessão por',
     kassivo3: 'A luta pelo poder',
@@ -116,7 +116,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'O Nodo Norte',
     luckyNumber: 0,
-    image: 'r11_norte.jpg',
+    image: require('@/data/cards/assets/r11_norte.jpg'),
     kassivo1: 'Haverá',
     kassivo2: 'Sucesso',
     kassivo3: 'Benefício',
@@ -127,7 +127,7 @@ export const CardsData0: CardsType[] = [
   {
     name: 'O Nodo Sul',
     luckyNumber: 0,
-    image: 'r12_sul.jpg',
+    image: require('@/data/cards/assets/r12_sul.jpg'),
     kassivo1: 'Não acontecerá',
     kassivo2: 'Ansiedade sobre',
     kassivo3: 'Problema',
@@ -141,7 +141,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Áries',
     luckyNumber: 0,
-    image: 's01_aries.jpg',
+    image: require('@/data/cards/assets/s01_aries.jpg'),
     kassivo1: 'Energia para enfrentar o desafio de',
     kassivo2: 'Seus desejos em relação a',
     kassivo3: 'Resultado da honestidade e do esforço de',
@@ -152,7 +152,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Touro',
     luckyNumber: 0,
-    image: 's02_touro.jpg',
+    image: require('@/data/cards/assets/s02_touro.jpg'),
     kassivo1: 'Fontes a manter',
     kassivo2: 'A praticabilidade de',
     kassivo3: 'Resultado da produtividade de',
@@ -163,7 +163,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Gêmeos',
     luckyNumber: 0,
-    image: 's03_gemeos.jpg',
+    image: require('@/data/cards/assets/s03_gemeos.jpg'),
     kassivo1: 'Informação para explicar',
     kassivo2: 'Comunicados sobre',
     kassivo3: 'Resultado das variações de',
@@ -174,7 +174,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Câncer',
     luckyNumber: 0,
-    image: 's04_cancer.jpg',
+    image: require('@/data/cards/assets/s04_cancer.jpg'),
     kassivo1: 'Intuição para proteger',
     kassivo2: 'Atitudes do passado a respeito de',
     kassivo3: 'Resultado da história de',
@@ -185,7 +185,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Leão',
     luckyNumber: 0,
-    image: 's05_leao.jpg',
+    image: require('@/data/cards/assets/s05_leao.jpg'),
     kassivo1: 'Autoconfiança para criar',
     kassivo2: 'Tendo oportunidade sobre',
     kassivo3: 'Resultado da impressão sobre',
@@ -196,7 +196,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Virgem',
     luckyNumber: 0,
-    image: 's06_virgem.jpg',
+    image: require('@/data/cards/assets/s06_virgem.jpg'),
     kassivo1: 'Métodos para o poder de cura de',
     kassivo2: 'A análise de',
     kassivo3: 'Resultado do perfeccionismo de',
@@ -207,7 +207,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Libra',
     luckyNumber: 0,
-    image: 's07_libra.jpg',
+    image: require('@/data/cards/assets/s07_libra.jpg'),
     kassivo1: 'Cooperação para aperfeiçoar',
     kassivo2: 'Decisões sobre',
     kassivo3: 'Resultado da honestidade mostrado por',
@@ -218,7 +218,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Escorpião',
     luckyNumber: 0,
-    image: 's08_escorpiao.jpg',
+    image: require('@/data/cards/assets/s08_escorpiao.jpg'),
     kassivo1: 'Purificação para renascer',
     kassivo2: 'Os segredos de',
     kassivo3: 'Resultado do poder de',
@@ -229,7 +229,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Sagitário',
     luckyNumber: 0,
-    image: 's09_sagitario.jpg',
+    image: require('@/data/cards/assets/s09_sagitario.jpg'),
     kassivo1: 'Esclarecimentos para compreender',
     kassivo2: 'A sabedoria de',
     kassivo3: 'Resultado da compreensão de',
@@ -240,7 +240,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Capricórnio',
     luckyNumber: 0,
-    image: 's10_capricornio.jpg',
+    image: require('@/data/cards/assets/s10_capricornio.jpg'),
     kassivo1: 'Dedicação para conseguir',
     kassivo2: 'Focalizar em',
     kassivo3: 'Resultado das regras impostas por',
@@ -251,7 +251,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Aquário',
     luckyNumber: 0,
-    image: 's11_aquario.jpg',
+    image: require('@/data/cards/assets/s11_aquario.jpg'),
     kassivo1: 'Talento para experimentar com',
     kassivo2: 'As descobertas de',
     kassivo3: 'Resultado da excentricidade de',
@@ -262,7 +262,7 @@ export const CardsData1: CardsType[] = [
   {
     name: 'Peixes',
     luckyNumber: 0,
-    image: 's12_peixes.jpg',
+    image: require('@/data/cards/assets/s12_peixes.jpg'),
     kassivo1: 'Espiritualidade para finalmente experimentar',
     kassivo2: 'Confiar no seu conhecimento psíquico de',
     kassivo3: 'Resultado de indecisão de ou a respeito de',
@@ -276,7 +276,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Desejos',
     luckyNumber: 0,
-    image: 'h01_desejo.jpg',
+    image: require('@/data/cards/assets/h01_desejo.jpg'),
     kassivo1: 'Quem você é',
     kassivo2: 'Seus desejos',
     kassivo3: 'Suas ações',
@@ -287,7 +287,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Fortuna',
     luckyNumber: 0,
-    image: 'h02_fortuna.jpg',
+    image: require('@/data/cards/assets/h02_fortuna.jpg'),
     kassivo1: 'Suas crenças',
     kassivo2: 'O que você vale',
     kassivo3: 'Suas fontes',
@@ -298,7 +298,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Planos',
     luckyNumber: 0,
-    image: 'h03_planos.jpg',
+    image: require('@/data/cards/assets/h03_planos.jpg'),
     kassivo1: 'Suas ideias',
     kassivo2: 'Ideias e viagens a curto prazo',
     kassivo3: 'Quem e o que está à sua volta',
@@ -309,7 +309,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Suporte',
     luckyNumber: 0,
-    image: 'h04_suporte.jpg',
+    image: require('@/data/cards/assets/h04_suporte.jpg'),
     kassivo1: 'O que o faz seintir-se seguro',
     kassivo2: 'Suportar',
     kassivo3: 'Seu lar ou sua base familiar',
@@ -320,7 +320,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Amor e Jogos',
     luckyNumber: 0,
-    image: 'h05_amor_jogos.jpg',
+    image: require('@/data/cards/assets/h05_amor_jogos.jpg'),
     kassivo1: 'O poder do amor',
     kassivo2: 'Jogos de investimentos e outros jogos',
     kassivo3: 'Suas criações',
@@ -331,7 +331,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Fartura',
     luckyNumber: 0,
-    image: 'h06_fartura.jpg',
+    image: require('@/data/cards/assets/h06_fartura.jpg'),
     kassivo1: 'Servir aos outros',
     kassivo2: 'O que é bom para nós',
     kassivo3: 'Seu trabalho',
@@ -342,7 +342,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Cooperação',
     luckyNumber: 0,
-    image: 'h07_cooperacao.jpg',
+    image: require('@/data/cards/assets/h07_cooperacao.jpg'),
     kassivo1: 'Equilíbrio',
     kassivo2: 'Cooperação',
     kassivo3: 'Seu(s) sócio(s)',
@@ -353,7 +353,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Poder',
     luckyNumber: 0,
-    image: 'h08_poder.jpg',
+    image: require('@/data/cards/assets/h08_poder.jpg'),
     kassivo1: 'Poder pessoal',
     kassivo2: 'Os mistérios da vida',
     kassivo3: 'Uma oportunidade maior',
@@ -364,7 +364,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Viagens',
     luckyNumber: 0,
-    image: 'h09_viagens.jpg',
+    image: require('@/data/cards/assets/h09_viagens.jpg'),
     kassivo1: 'Valores espirituais',
     kassivo2: 'Ideias e viagens a longo prazo',
     kassivo3: 'O que deve ser partilhado',
@@ -375,7 +375,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Sucesso',
     luckyNumber: 0,
-    image: 'h10_sucesso.jpg',
+    image: require('@/data/cards/assets/h10_sucesso.jpg'),
     kassivo1: 'Seu destino',
     kassivo2: 'Para onde você está indo',
     kassivo3: 'Sua carreira',
@@ -386,7 +386,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Liberdade',
     luckyNumber: 0,
-    image: 'h11_liberdade.jpg',
+    image: require('@/data/cards/assets/h11_liberdade.jpg'),
     kassivo1: 'Liberdade',
     kassivo2: 'Associações',
     kassivo3: 'Seu círculo de amizade',
@@ -397,7 +397,7 @@ export const CardsData2: CardsType[] = [
   {
     name: 'Fé',
     luckyNumber: 0,
-    image: 'h12_fe.jpg',
+    image: require('@/data/cards/assets/h12_fe.jpg'),
     kassivo1: 'Sua fé',
     kassivo2: 'Tendências ocultas',
     kassivo3: 'Grande intuição ou acontecimentos opressivos',
