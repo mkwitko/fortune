@@ -30,7 +30,6 @@ export function ConsultationsEntityContextProvider({
     auth.onAuthStateChanged((user) => {
       if (user) {
         Consultations.getHttp(user.uid).then((res: any) => {
-          console.log('Consultations - ', res)
           Consultations.hook.setData(res)
           Consultations.setCache(res)
         })

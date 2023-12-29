@@ -1,5 +1,6 @@
 import Title from '@/components/PageBuilder/Title'
 import {
+  ActivityIndicator,
   Text,
   TextInput,
   Touchable,
@@ -10,16 +11,18 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import { useWalletEntityContext } from '@/context/WalletEntityContext'
 import { useConsultationsEntityContext } from '@/context/ConsultationsEntityContext'
 import { useState } from 'react'
+import Toast from 'react-native-toast-message'
 
 export default function NewConsult() {
+  const { Wallet } = useWalletEntityContext()
   const {
-    Wallet: {
-      hook: { data },
-    },
-  } = useWalletEntityContext()
+    hook: { data },
+  } = Wallet
 
   const { Consultations } = useConsultationsEntityContext()
   const [question, setQuestion] = useState('')
+
+  console.log(data)
 
   return (
     <View
@@ -54,7 +57,7 @@ export default function NewConsult() {
               fontWeight: '800',
             }}
           >
-            {data ? data.balance : 0}
+            {data || 0}
           </Text>
         </View>
       </View>
@@ -65,7 +68,7 @@ export default function NewConsult() {
             backgroundColor: '#1F0437',
             borderTopRightRadius: 15,
             borderTopLeftRadius: 15,
-            padding: 20,
+            padding: 10,
           }}
         >
           <TextInput
@@ -74,12 +77,13 @@ export default function NewConsult() {
             }}
             style={{
               color: '#FFD86E',
-              opacity: 0.38,
+              // opacity: 0.38,
               fontSize: 12,
             }}
             placeholder=" Exemplo: Como eu posso melhorar minha sorte?"
           ></TextInput>
         </View>
+
         <View
           style={{
             backgroundColor: '#1F0437',
@@ -102,9 +106,31 @@ export default function NewConsult() {
               borderBottomLeftRadius: 15,
             }}
             onPress={() => {
-              Consultations.makeConsultation({
-                question,
-              })
+              if (data.balance > 0)
+                Consultations.makeConsultation({
+                  question,
+                }).then(() => {
+                  Wallet.update({
+                    data: {
+                      balance: data.balance - 1,
+                      id: data.id,
+                    },
+                  }).then(() => {
+                    Wallet.setClass(true).then(() => {
+                      Wallet.hook.setData({
+                        balance: data.balance - 1,
+                        id: data.id,
+                      })
+                    })
+                  })
+                })
+              else {
+                Toast.show({
+                  type: 'error',
+                  text1: 'Erro ao enviar pergunta',
+                  text2: 'Você não tem moedas suficientes.',
+                })
+              }
             }}
           >
             <Text

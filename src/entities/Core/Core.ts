@@ -65,7 +65,6 @@ export default class CoreEntity {
   }
 
   async update({ data, collection }: { data: any; collection?: string }) {
-    console.log('data - ', data)
     const { result, error } = await this.crud.update(
       collection || this.collection,
       data.id,

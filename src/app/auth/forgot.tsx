@@ -76,7 +76,7 @@ export default function Forgot() {
           style={{
             backgroundColor: '#FFD86E',
             borderRadius: 24,
-            width: '100%',
+            width: 300,
             height: 48,
             display: 'flex',
             justifyContent: 'center',
@@ -99,7 +99,7 @@ export default function Forgot() {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '100%',
+            width: 300,
           }}
         >
           <Link asChild href="/auth/login">

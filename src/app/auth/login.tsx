@@ -62,6 +62,7 @@ export default function Login() {
         </Text>
         <TextInput
           placeholder="seu@email.com.br"
+          placeholderTextColor={'#fff'}
           onChange={(e) => setEmail(e.nativeEvent.text)}
           style={{
             backgroundColor: '#643F84',
@@ -77,6 +78,7 @@ export default function Login() {
         />
         <TextInput
           placeholder="*********"
+          placeholderTextColor={'#fff'}
           onChange={(e) => setPassword(e.nativeEvent.text)}
           secureTextEntry={true}
           style={{
@@ -98,7 +100,7 @@ export default function Login() {
           style={{
             backgroundColor: '#FFD86E',
             borderRadius: 24,
-            width: '100%',
+            width: 300,
             height: 48,
             display: 'flex',
             justifyContent: 'center',
@@ -121,7 +123,7 @@ export default function Login() {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            width: '100%',
+            width: 300,
           }}
         >
           <Link asChild href="/auth/forgot">
@@ -150,7 +152,7 @@ export default function Login() {
           style={{
             backgroundColor: '#2699FB',
             borderRadius: 24,
-            width: '100%',
+            width: 300,
             height: 48,
             display: 'flex',
             justifyContent: 'center',

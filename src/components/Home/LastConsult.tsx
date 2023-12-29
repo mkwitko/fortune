@@ -9,6 +9,7 @@ import { CardsData0, CardsData1, CardsData2 } from '@/data/cards/CardsData'
 import { useEffect, useState } from 'react'
 import { Link } from 'expo-router'
 import { setCache } from '@/services/Cache'
+import { ScrollView } from 'react-native-gesture-handler'
 
 export default function LastConsult() {
   const {
@@ -43,48 +44,55 @@ export default function LastConsult() {
         }}
       >
         <Title title="Última consulta:" />
-        <View
+        <ScrollView
+          horizontal
           style={{
-            flexDirection: 'row',
-            gap: 10,
-            overflow: 'scroll',
+            flex: 1,
           }}
         >
-          {cards &&
-            cards.length > 0 &&
-            cards.map((e: any, i: number) => {
-              return (
-                <View
-                  style={{
-                    alignItems: 'center',
-                    gap: 5,
-                  }}
-                  key={`consultation_card_${i}`}
-                >
-                  <Text
+          <View
+            style={{
+              flexDirection: 'row',
+              gap: 10,
+              flex: 1,
+            }}
+          >
+            {cards &&
+              cards.length > 0 &&
+              cards.map((e: any, i: number) => {
+                return (
+                  <View
                     style={{
-                      fontSize: 16,
-                      color: '#fff',
-                      fontWeight: '800',
+                      alignItems: 'center',
+                      gap: 5,
                     }}
+                    key={`consultation_card_${i}`}
                   >
-                    {e.name}
-                  </Text>
-                  <TouchableOpacity
-                    onPress={() => {
-                      setCurrentCard(i)
-                    }}
-                  >
-                    <Cards
-                      width={i === currentCard ? 150 : 85}
-                      opacity={i === currentCard ? 1 : 0.3}
-                      backgroundImage={e.image}
-                    />
-                  </TouchableOpacity>
-                </View>
-              )
-            })}
-        </View>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        color: '#fff',
+                        fontWeight: '800',
+                      }}
+                    >
+                      {e.name}
+                    </Text>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setCurrentCard(i)
+                      }}
+                    >
+                      <Cards
+                        width={i === currentCard ? 125 : 70}
+                        opacity={i === currentCard ? 1 : 0.3}
+                        backgroundImage={e.image}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                )
+              })}
+          </View>
+        </ScrollView>
       </View>
       <PurpleBox>
         <Subtitle

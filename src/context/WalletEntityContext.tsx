@@ -3,6 +3,17 @@ import React, { useContext, useEffect } from 'react'
 import Entities from '@/entities'
 import WalletEntity from '@/entities/WalletEntity/WalletEntity'
 import Authentication from '@/services/Auth'
+import { decrypt } from '@/services/Encrypt'
+import firebaseApp from '@/infra/Firebase'
+import {
+  collection,
+  getFirestore,
+  onSnapshot,
+  query,
+  where,
+} from 'firebase/firestore'
+import { id } from 'date-fns/locale'
+import { toast } from 'react-toastify'
 
 interface WalletEntityContextProps {
   Wallet: WalletEntity
@@ -28,9 +39,9 @@ export function WalletEntityContextProvider({
     auth.onAuthStateChanged((user) => {
       if (user) {
         Wallet.getHttp(user.uid).then((res: any) => {
-          console.log('wallet - ', res)
-          Wallet.hook.setData(res)
-          Wallet.setCache(res)
+          const data = +decrypt(res.balance)
+          Wallet.hook.setData(data)
+          Wallet.setCache(data)
         })
       }
     })

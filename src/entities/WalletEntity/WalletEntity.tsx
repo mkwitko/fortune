@@ -5,7 +5,7 @@ import { HttpMethods } from './methods'
 export default class WalletEntity extends CoreEntity {
   constructor() {
     super({
-      collection: 'Wallet',
+      collection: 'wallets',
     })
   }
 

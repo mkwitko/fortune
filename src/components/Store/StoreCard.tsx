@@ -1,8 +1,18 @@
 import { StoreType } from '@/data/store/StoreType'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { FontAwesome5, AntDesign } from '@expo/vector-icons'
+import { useUserEntityContext } from '@/context/UserEntityContext'
+import Payment from '@/utils/payment'
 
 export default function StoreCard({ store }: { store: StoreType }) {
+  const {
+    User: {
+      hook: { data },
+    },
+  } = useUserEntityContext()
+
+  const { initializePaymentSheet, openPaymentSheet } = Payment()
+
   return (
     <View
       style={{
@@ -73,6 +83,15 @@ export default function StoreCard({ store }: { store: StoreType }) {
         }}
       >
         <TouchableOpacity
+          onPress={() => {
+            initializePaymentSheet({
+              user: data,
+              amount: store.price,
+              coins: store.amount,
+            }).then(() => {
+              openPaymentSheet()
+            })
+          }}
           style={{
             backgroundColor: '#FFD86E',
             width: '100%',
@@ -82,9 +101,6 @@ export default function StoreCard({ store }: { store: StoreType }) {
             paddingVertical: 10,
             borderBottomLeftRadius: 15,
             borderBottomRightRadius: 15,
-          }}
-          onPress={() => {
-            //
           }}
         >
           <Text

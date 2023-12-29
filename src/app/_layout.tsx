@@ -5,14 +5,20 @@ import HeaderRight from '@/components/Core/HeaderRight'
 import { AuthContextProvider } from '@/context/AuthContext'
 import ContextWrapper from '@/context'
 import { usePathname } from 'expo-router'
+import { StripeProvider } from '@stripe/stripe-react-native'
+
+import Toast from 'react-native-toast-message'
 
 export default function Layout() {
   return (
-    <AuthContextProvider>
-      <ContextWrapper>
-        <MyDrawer />
-      </ContextWrapper>
-    </AuthContextProvider>
+    <StripeProvider publishableKey="pk_test_51Lr09tAgRNYgDKJ1dHFXXlSk6CbdkHL70hTMsiSSztkAbGVCmMip2fB56tjYdk0jlQlfHyMeRDm66p5RsuQEc9mU00iWqgMF3W">
+      <AuthContextProvider>
+        <ContextWrapper>
+          <MyDrawer />
+        </ContextWrapper>
+      </AuthContextProvider>
+      <Toast />
+    </StripeProvider>
   )
 }
 
