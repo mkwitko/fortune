@@ -62,7 +62,7 @@ export default function Login() {
         </Text>
         <TextInput
           placeholder="seu@email.com.br"
-          placeholderTextColor={'#fff'}
+          placeholderTextColor={'#320B54'}
           onChange={(e) => setEmail(e.nativeEvent.text)}
           style={{
             backgroundColor: '#643F84',
@@ -78,7 +78,7 @@ export default function Login() {
         />
         <TextInput
           placeholder="*********"
-          placeholderTextColor={'#fff'}
+          placeholderTextColor={'#320B54'}
           onChange={(e) => setPassword(e.nativeEvent.text)}
           secureTextEntry={true}
           style={{
@@ -148,28 +148,6 @@ export default function Login() {
             </Text>
           </Link>
         </View>
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#2699FB',
-            borderRadius: 24,
-            width: 300,
-            height: 48,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 60,
-          }}
-        >
-          <Text
-            style={{
-              color: '#fff',
-              fontSize: 14,
-              fontWeight: '800',
-            }}
-          >
-            Entrar com Facebook
-          </Text>
-        </TouchableOpacity>
       </View>
     </View>
   )

@@ -60,53 +60,117 @@ export default function Register() {
         >
           Criar nova conta:
         </Text>
-        <TextInput
-          placeholder="seu@email.com.br"
-          onChange={(e) => setEmail(e.nativeEvent.text)}
+        <View
           style={{
-            backgroundColor: '#643F84',
-            borderRadius: 24,
-            borderWidth: 2,
-            borderColor: '#FFD86E',
-            width: 300,
-            height: 48,
-            padding: 10,
-            color: '#fff',
-            paddingHorizontal: 20,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: 10,
           }}
-        />
-        <TextInput
-          placeholder="*********"
-          onChange={(e) => setPassword(e.nativeEvent.text)}
-          secureTextEntry={true}
+        >
+          <Text
+            style={{
+              color: '#fff',
+            }}
+          >
+            E-mail
+          </Text>
+          <TextInput
+            placeholder="seu@email.com.br"
+            placeholderTextColor={'#320B54'}
+            onChange={(e) => setEmail(e.nativeEvent.text)}
+            style={{
+              backgroundColor: '#643F84',
+              borderRadius: 24,
+              borderWidth: 2,
+              borderColor: '#FFD86E',
+              width: 300,
+              height: 48,
+              padding: 10,
+              color: '#fff',
+              paddingHorizontal: 20,
+            }}
+          />
+        </View>
+        <View
           style={{
-            backgroundColor: '#643F84',
-            borderRadius: 24,
-            borderWidth: 2,
-            borderColor: '#FFD86E',
-            width: 300,
-            height: 48,
-            padding: 10,
-            color: '#fff',
-            paddingHorizontal: 20,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: 10,
           }}
-        />
-        <TextInput
-          placeholder="*********"
-          onChange={(e) => setPasswordConfirmation(e.nativeEvent.text)}
-          secureTextEntry={true}
+        >
+          <Text
+            style={{
+              color: '#fff',
+            }}
+          >
+            Senha
+          </Text>
+          <TextInput
+            placeholder="*********"
+            placeholderTextColor={'#320B54'}
+            onChange={(e) => setPassword(e.nativeEvent.text)}
+            secureTextEntry={true}
+            style={{
+              backgroundColor: '#643F84',
+              borderRadius: 24,
+              borderWidth: 2,
+              borderColor: '#FFD86E',
+              width: 300,
+              height: 48,
+              padding: 10,
+              color: '#fff',
+              paddingHorizontal: 20,
+            }}
+          />
+        </View>
+        <View
           style={{
-            backgroundColor: '#643F84',
-            borderRadius: 24,
-            borderWidth: 2,
-            borderColor: '#FFD86E',
-            width: 300,
-            height: 48,
-            padding: 10,
-            color: '#fff',
-            paddingHorizontal: 20,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: 10,
           }}
-        />
+        >
+          <Text
+            style={{
+              color: '#fff',
+            }}
+          >
+            Confirmar Senha
+          </Text>
+          <TextInput
+            placeholder="*********"
+            placeholderTextColor={'#320B54'}
+            onChange={(e) => setPasswordConfirmation(e.nativeEvent.text)}
+            secureTextEntry={true}
+            style={{
+              backgroundColor: '#643F84',
+              borderRadius: 24,
+              borderWidth: 2,
+              borderColor: '#FFD86E',
+              width: 300,
+              height: 48,
+              padding: 10,
+              color: '#fff',
+              paddingHorizontal: 20,
+            }}
+          />
+        </View>
+
+        <Text
+          style={{
+            color: '#fff',
+            paddingHorizontal: 80,
+            textAlign: 'center',
+            fontSize: 10,
+          }}
+        >
+          Ao criar conta, você aceita nossos termos de uso e confirma ter mais
+          de 16 anos:
+        </Text>
+
         <TouchableOpacity
           onPress={() => {
             signUp(email, password, passwordConfirmation).then((res) => {

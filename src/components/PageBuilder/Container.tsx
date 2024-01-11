@@ -13,6 +13,7 @@ export default function Container({
     <View
       style={{
         padding: 30,
+        paddingVertical: 0,
         flex: 1,
         ...styled,
       }}
@@ -29,6 +30,7 @@ export default function Container({
             gap: 40,
             flex: 1,
             backgroundColor: `#320B54`,
+            marginVertical: 40,
           }}
         >
           {children}

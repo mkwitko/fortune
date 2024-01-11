@@ -9,8 +9,10 @@ export default function Forgot() {
   const [email, setEmail] = useState('')
   const { forgotPassword } = Authentication()
   return (
-    <Container
+    <View
       style={{
+        display: 'flex',
+        flexDirection: 'column',
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
@@ -18,9 +20,10 @@ export default function Forgot() {
     >
       <View
         style={{
+          display: 'flex',
           flexDirection: 'row',
           gap: 10,
-          flex: 0.3,
+          flex: 0.4,
           alignItems: 'center',
           justifyContent: 'center',
         }}
@@ -39,10 +42,10 @@ export default function Forgot() {
       <View
         style={{
           display: 'flex',
+          flex: 0.6,
           flexDirection: 'column',
           alignItems: 'center',
           gap: 20,
-          flex: 0.7,
         }}
       >
         <Text
@@ -56,6 +59,7 @@ export default function Forgot() {
         </Text>
         <TextInput
           placeholder="seu@email.com.br"
+          placeholderTextColor={'#320B54'}
           onChange={(e) => setEmail(e.nativeEvent.text)}
           style={{
             backgroundColor: '#643F84',
@@ -69,6 +73,37 @@ export default function Forgot() {
             paddingHorizontal: 20,
           }}
         />
+
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 20,
+          }}
+        >
+          <Text
+            style={{
+              color: '#fff',
+              paddingHorizontal: 60,
+              textAlign: 'center',
+              fontSize: 10,
+            }}
+          >
+            Se o e-mail acima estiver associado à uma conta, você receberá um
+            link para alteração da sua senha de segurança.
+          </Text>
+          <Text
+            style={{
+              color: '#fff',
+              paddingHorizontal: 60,
+              textAlign: 'center',
+              fontSize: 10,
+            }}
+          >
+            Caso não tenha solicitado, desconsidere.
+          </Text>
+        </View>
+
         <TouchableOpacity
           onPress={() => {
             forgotPassword(email)
@@ -115,6 +150,6 @@ export default function Forgot() {
           </Link>
         </View>
       </View>
-    </Container>
+    </View>
   )
 }

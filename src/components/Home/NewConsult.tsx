@@ -12,6 +12,7 @@ import { useWalletEntityContext } from '@/context/WalletEntityContext'
 import { useConsultationsEntityContext } from '@/context/ConsultationsEntityContext'
 import { useState } from 'react'
 import Toast from 'react-native-toast-message'
+import { exampleQuestions } from './data/questions'
 
 export default function NewConsult() {
   const { Wallet } = useWalletEntityContext()
@@ -22,14 +23,14 @@ export default function NewConsult() {
   const { Consultations } = useConsultationsEntityContext()
   const [question, setQuestion] = useState('')
 
-  console.log(data)
+  const randomNumber = Math.floor(Math.random() * exampleQuestions.length - 1)
 
   return (
     <View
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 20,
+        gap: 10,
       }}
     >
       <View
@@ -75,12 +76,12 @@ export default function NewConsult() {
             onChange={(e) => {
               setQuestion(e.nativeEvent.text)
             }}
+            placeholderTextColor={'#978E74'}
             style={{
               color: '#FFD86E',
-              // opacity: 0.38,
               fontSize: 12,
             }}
-            placeholder=" Exemplo: Como eu posso melhorar minha sorte?"
+            placeholder={`Exemplo: ${exampleQuestions[randomNumber]}`}
           ></TextInput>
         </View>
 

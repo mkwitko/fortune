@@ -21,7 +21,10 @@ export default function LastConsult() {
   const [currentCard, setCurrentCard] = useState(0)
 
   const [lastConsult, setLastConsult] = useState<any>(
-    data && data.consultations[data.consultations.length - 1],
+    data &&
+      data.consultations &&
+      data.consultations.length > 0 &&
+      data.consultations[data.consultations.length - 1],
   )
 
   useEffect(() => {
@@ -35,12 +38,18 @@ export default function LastConsult() {
   const card3 = lastConsult && CardsData2[lastConsult.randomNumbers[2] - 1]
   const cards = lastConsult && [card1, card2, card3]
   return (
-    <>
+    <View
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10,
+      }}
+    >
       <View
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 20,
+          gap: 10,
         }}
       >
         <Title title="Última consulta:" />
@@ -70,7 +79,7 @@ export default function LastConsult() {
                   >
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: 14,
                         color: '#fff',
                         fontWeight: '800',
                       }}
@@ -83,7 +92,7 @@ export default function LastConsult() {
                       }}
                     >
                       <Cards
-                        width={i === currentCard ? 125 : 70}
+                        width={i === currentCard ? 165 : 80}
                         opacity={i === currentCard ? 1 : 0.3}
                         backgroundImage={e.image}
                       />
@@ -153,6 +162,6 @@ export default function LastConsult() {
           </TouchableOpacity>
         </Link>
       </PurpleBox>
-    </>
+    </View>
   )
 }

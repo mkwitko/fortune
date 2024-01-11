@@ -31,7 +31,7 @@ export default function Historic() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 20,
+        gap: 10,
       }}
     >
       <Title title="Histórico" />

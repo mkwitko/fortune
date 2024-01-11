@@ -10,7 +10,6 @@ export default function Cards({
   width?: number
   opacity?: number
 }) {
-  //   const imagePath = require('./../../data/cards/assets/h01_desejo.jpg')
   return (
     <View
       style={{

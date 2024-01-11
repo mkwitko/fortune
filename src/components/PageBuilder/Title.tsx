@@ -12,6 +12,7 @@ export default function Title({
       style={{
         color: '#FFF',
         fontWeight: '800',
+        fontSize: 16,
         ...styled,
       }}
     >
