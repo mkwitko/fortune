@@ -1,13 +1,17 @@
 import Container from '@/components/PageBuilder/Container'
+import { useUserEntityContext } from '@/context/UserEntityContext'
 import Authentication from '@/services/Auth'
 import { Link } from 'expo-router'
 import { useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
 export default function Forgot() {
   const [email, setEmail] = useState('')
   const { forgotPassword } = Authentication()
+
+  const { loading, setLoading } = useUserEntityContext()
+
   return (
     <View
       style={{
@@ -105,8 +109,11 @@ export default function Forgot() {
         </View>
 
         <TouchableOpacity
-          onPress={() => {
-            forgotPassword(email)
+          disabled={loading}
+          onPress={async () => {
+            setLoading(true)
+            await forgotPassword(email)
+            setLoading(false)
           }}
           style={{
             backgroundColor: '#FFD86E',
@@ -116,17 +123,21 @@ export default function Forgot() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            opacity: loading ? 0.5 : 1,
           }}
         >
-          <Text
-            style={{
-              color: '#1F0437',
-              fontSize: 14,
-              fontWeight: '800',
-            }}
-          >
-            Enviar e-mail de recuperação
-          </Text>
+          {loading && <ActivityIndicator />}
+          {!loading && (
+            <Text
+              style={{
+                color: '#1F0437',
+                fontSize: 14,
+                fontWeight: '800',
+              }}
+            >
+              Enviar e-mail de recuperação
+            </Text>
+          )}
         </TouchableOpacity>
         <View
           style={{
@@ -137,12 +148,13 @@ export default function Forgot() {
             width: 300,
           }}
         >
-          <Link asChild href="/auth/login">
+          <Link disabled={loading} asChild href="/auth/login">
             <Text
               style={{
                 color: '#FFD86E',
                 fontWeight: '800',
                 fontSize: 12,
+                opacity: loading ? 0.5 : 1,
               }}
             >
               Voltar

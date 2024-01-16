@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import Title from '@/components/PageBuilder/Title'
 import Container from '@/components/PageBuilder/Container'
@@ -15,7 +15,6 @@ import {
   onSnapshot,
 } from 'firebase/firestore'
 import { useUserEntityContext } from '@/context/UserEntityContext'
-import { decrypt } from '@/services/Encrypt'
 import { useWalletEntityContext } from '@/context/WalletEntityContext'
 import Toast from 'react-native-toast-message'
 
@@ -27,6 +26,7 @@ export default function Store() {
     User: {
       hook: { data },
     },
+    loading,
   } = useUserEntityContext()
   const db = getFirestore(firebaseApp)
 
@@ -35,12 +35,11 @@ export default function Store() {
     onSnapshot(q, (querySnapshot) => {
       querySnapshot.docChanges().forEach((change) => {
         const data = change.doc.data()
-        if (change.type === 'modified') {
+        if (change.type === 'modified' || change.type === 'added') {
           Wallet.getHttp(data.id)
             .then((res: any) => {
-              const data = +decrypt(res.balance)
-              Wallet.hook.setData(data)
-              Wallet.setCache(data)
+              Wallet.hook.setData(res)
+              Wallet.setCache(res)
               Toast.show({
                 type: 'success',
                 text1: 'Saldo atualizado!',
@@ -75,7 +74,22 @@ export default function Store() {
           gap: 10,
         }}
       >
-        <AntDesign name="arrowleft" size={24} color="white" />
+        <TouchableOpacity
+          disabled={loading}
+          onPress={() => {
+            if (router.canGoBack()) router.back()
+            else router.push('/')
+          }}
+        >
+          <AntDesign
+            style={{
+              opacity: loading ? 0.5 : 1,
+            }}
+            name="arrowleft"
+            size={24}
+            color="white"
+          />
+        </TouchableOpacity>
         <Title title="Loja de Moedas da Sorte:" />
       </View>
 

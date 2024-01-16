@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { Text, Touchable, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import Title from '@/components/PageBuilder/Title'
 import Container from '@/components/PageBuilder/Container'
@@ -6,6 +6,8 @@ import DateText from '@/components/PageBuilder/Date'
 import PurpleBox from '@/components/PageBuilder/PurpleBox'
 import Subtitle from '@/components/PageBuilder/Subtitle'
 import Paragraph from '@/components/PageBuilder/Text'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { router } from 'expo-router'
 
 export default function BuyHistory() {
   return (
@@ -22,7 +24,15 @@ export default function BuyHistory() {
           gap: 10,
         }}
       >
-        <AntDesign name="arrowleft" size={24} color="white" />
+        <TouchableOpacity
+          onPress={() => {
+            if (router.canGoBack()) router.back()
+            else router.push('/')
+          }}
+        >
+          <AntDesign name="arrowleft" size={24} color="white" />
+        </TouchableOpacity>
+
         <Title title="Histórico de compras:" />
       </View>
       <DateText text="10/10/2021" />

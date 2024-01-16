@@ -9,7 +9,7 @@ import Paragraph from '@/components/PageBuilder/Text'
 import { useConsultationsEntityContext } from '@/context/ConsultationsEntityContext'
 import { CardsData0, CardsData1, CardsData2 } from '@/data/cards/CardsData'
 import { setCache } from '@/services/Cache'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 
 export default function History() {
   const {
@@ -36,7 +36,14 @@ export default function History() {
           gap: 10,
         }}
       >
-        <AntDesign name="arrowleft" size={24} color="white" />
+        <TouchableOpacity
+          onPress={() => {
+            if (router.canGoBack()) router.back()
+            else router.push('/')
+          }}
+        >
+          <AntDesign name="arrowleft" size={24} color="white" />
+        </TouchableOpacity>
         <Title title="Histórico de consultas:" />
       </View>
       {reverse &&

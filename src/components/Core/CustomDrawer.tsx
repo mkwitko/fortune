@@ -2,10 +2,11 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer'
-import { Text, Touchable, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons'
 import Authentication from '@/services/Auth'
+import { router } from 'expo-router'
 
 export default function CustomDrawer(props: any) {
   const { signOut } = Authentication()
@@ -28,7 +29,8 @@ export default function CustomDrawer(props: any) {
       >
         <TouchableOpacity
           onPress={() => {
-            //
+            if (router.canGoBack()) router.back()
+            else router.push('/')
           }}
         >
           <AntDesign name="arrowleft" size={24} color="white" />

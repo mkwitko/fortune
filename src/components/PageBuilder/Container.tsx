@@ -12,7 +12,7 @@ export default function Container({
   return (
     <View
       style={{
-        padding: 30,
+        marginHorizontal: 15,
         paddingVertical: 0,
         flex: 1,
         ...styled,

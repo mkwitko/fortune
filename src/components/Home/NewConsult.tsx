@@ -13,6 +13,10 @@ import { useConsultationsEntityContext } from '@/context/ConsultationsEntityCont
 import { useState } from 'react'
 import Toast from 'react-native-toast-message'
 import { exampleQuestions } from './data/questions'
+import generateUUID from '@/services/GenerateUUID'
+import { RandomNumbers } from '@/services/RandomNumbers'
+import { parseISO } from 'date-fns'
+import { router } from 'expo-router'
 
 export default function NewConsult() {
   const { Wallet } = useWalletEntityContext()
@@ -24,6 +28,41 @@ export default function NewConsult() {
   const [question, setQuestion] = useState('')
 
   const randomNumber = Math.floor(Math.random() * exampleQuestions.length - 1)
+
+  const makeConsultation = async (data: any) => {
+    const uuid = generateUUID()
+    const randomNumbers = RandomNumbers().getRandomNumbers(1, 12, 3)
+    const dataToAdd = {
+      ...data,
+      randomNumbers,
+      uuid,
+      createdAt: parseISO(new Date().toISOString()),
+    }
+    router.push('/consultation')
+    Consultations.hook.setCurrent(dataToAdd)
+    Consultations.setCache(dataToAdd, true, 'currentConsultation')
+    if (!Consultations.hook.data) {
+      Consultations.insert({
+        data: {
+          id: Consultations.authentication.auth.currentUser?.uid,
+          consultations: [dataToAdd],
+        },
+        customId: Consultations.authentication.auth.currentUser?.uid,
+      })
+      Consultations.hook.setData(dataToAdd)
+    } else {
+      Consultations.update({
+        data: {
+          id: Consultations.authentication.auth.currentUser?.uid,
+          consultations: [...Consultations.hook.data.consultations, dataToAdd],
+        },
+      })
+      Consultations.hook.setData({
+        ...Consultations.hook.data,
+        consultations: [...Consultations.hook.data.consultations, dataToAdd],
+      })
+    }
+  }
 
   return (
     <View
@@ -58,7 +97,7 @@ export default function NewConsult() {
               fontWeight: '800',
             }}
           >
-            {data || 0}
+            {data?.balance || 0}
           </Text>
         </View>
       </View>
@@ -81,6 +120,7 @@ export default function NewConsult() {
               color: '#FFD86E',
               fontSize: 12,
             }}
+            value={question || ''}
             placeholder={`Exemplo: ${exampleQuestions[randomNumber]}`}
           ></TextInput>
         </View>
@@ -105,10 +145,11 @@ export default function NewConsult() {
               justifyContent: 'center',
               paddingVertical: 10,
               borderBottomLeftRadius: 15,
+              opacity: question.length < 10 ? 0.5 : 1,
             }}
             onPress={() => {
-              if (data.balance > 0)
-                Consultations.makeConsultation({
+              if (data && data?.balance > 0) {
+                makeConsultation({
                   question,
                 }).then(() => {
                   Wallet.update({
@@ -125,7 +166,7 @@ export default function NewConsult() {
                     })
                   })
                 })
-              else {
+              } else {
                 Toast.show({
                   type: 'error',
                   text1: 'Erro ao enviar pergunta',
@@ -138,12 +179,14 @@ export default function NewConsult() {
               style={{
                 color: '#1F0437',
                 fontWeight: '800',
+                opacity: question.length < 10 ? 0.5 : 1,
               }}
             >
               Enviar pergunta
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
+            disabled={question.length > 0}
             style={{
               backgroundColor: '#FFFFFF',
               flex: 0.4,
@@ -152,9 +195,10 @@ export default function NewConsult() {
               justifyContent: 'center',
               paddingVertical: 10,
               borderBottomRightRadius: 15,
+              opacity: question.length > 0 ? 0.5 : 1,
             }}
             onPress={() => {
-              Consultations.makeConsultation({})
+              if (question.length === 0) Consultations.makeConsultation({})
             }}
           >
             <Text
@@ -162,6 +206,7 @@ export default function NewConsult() {
                 color: '#1F0437',
                 fontSize: 10,
                 fontWeight: '800',
+                opacity: question.length > 0 ? 0.5 : 1,
               }}
             >
               Toque do Destino

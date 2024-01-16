@@ -24,7 +24,7 @@ export default class ConsultationsEntity extends CoreEntity {
 
   public hook = ConsultationsEntityHook()
 
-  makeConsultation = async (data: any) => {
+  async makeConsultation(data: any) {
     const uuid = generateUUID()
     const randomNumbers = RandomNumbers().getRandomNumbers(1, 12, 3)
     const dataToAdd = {

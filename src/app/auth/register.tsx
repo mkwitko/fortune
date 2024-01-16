@@ -3,8 +3,9 @@ import { useWalletEntityContext } from '@/context/WalletEntityContext'
 import Authentication from '@/services/Auth'
 import { Link } from 'expo-router'
 import { useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 export default function Register() {
   const [email, setEmail] = useState('')
@@ -12,8 +13,10 @@ export default function Register() {
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
   const { signUp } = Authentication()
-  const { User } = useUserEntityContext()
+  const { User, loading, setLoading } = useUserEntityContext()
   const { Wallet } = useWalletEntityContext()
+
+  const [showPassword, setShowPassword] = useState(false)
   return (
     <View
       style={{
@@ -107,12 +110,11 @@ export default function Register() {
           >
             Senha
           </Text>
-          <TextInput
-            placeholder="*********"
-            placeholderTextColor={'#320B54'}
-            onChange={(e) => setPassword(e.nativeEvent.text)}
-            secureTextEntry={true}
+          <View
             style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
               backgroundColor: '#643F84',
               borderRadius: 24,
               borderWidth: 2,
@@ -120,10 +122,27 @@ export default function Register() {
               width: 300,
               height: 48,
               padding: 10,
-              color: '#fff',
               paddingHorizontal: 20,
             }}
-          />
+          >
+            <TextInput
+              placeholder="*********"
+              placeholderTextColor={'#320B54'}
+              onChange={(e) => setPassword(e.nativeEvent.text)}
+              secureTextEntry={!showPassword}
+              style={{
+                color: '#fff',
+              }}
+            />
+            <MaterialCommunityIcons
+              name={showPassword ? 'eye-off' : 'eye'}
+              size={24}
+              color="#aaa"
+              onPress={() => {
+                setShowPassword(!showPassword)
+              }}
+            />
+          </View>
         </View>
         <View
           style={{
@@ -140,12 +159,11 @@ export default function Register() {
           >
             Confirmar Senha
           </Text>
-          <TextInput
-            placeholder="*********"
-            placeholderTextColor={'#320B54'}
-            onChange={(e) => setPasswordConfirmation(e.nativeEvent.text)}
-            secureTextEntry={true}
+          <View
             style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
               backgroundColor: '#643F84',
               borderRadius: 24,
               borderWidth: 2,
@@ -153,10 +171,27 @@ export default function Register() {
               width: 300,
               height: 48,
               padding: 10,
-              color: '#fff',
               paddingHorizontal: 20,
             }}
-          />
+          >
+            <TextInput
+              placeholder="*********"
+              placeholderTextColor={'#320B54'}
+              onChange={(e) => setPassword(e.nativeEvent.text)}
+              secureTextEntry={!showPassword}
+              style={{
+                color: '#fff',
+              }}
+            />
+            <MaterialCommunityIcons
+              name={showPassword ? 'eye-off' : 'eye'}
+              size={24}
+              color="#aaa"
+              onPress={() => {
+                setShowPassword(!showPassword)
+              }}
+            />
+          </View>
         </View>
 
         <Text
@@ -172,8 +207,11 @@ export default function Register() {
         </Text>
 
         <TouchableOpacity
-          onPress={() => {
-            signUp(email, password, passwordConfirmation).then((res) => {
+          disabled={loading}
+          onPress={async () => {
+            console.log('click')
+            setLoading(true)
+            await signUp(email, password, passwordConfirmation).then((res) => {
               if (res?.error) return res.error
               User.insert({
                 data: {
@@ -188,11 +226,12 @@ export default function Register() {
                   id: res?.result?.user.uid,
                   createdAt: new Date(),
                   updatedAt: new Date(),
-                  balance: 0,
+                  balance: 5,
                 },
                 customId: res?.result?.user.uid,
               })
             })
+            setLoading(false)
           }}
           style={{
             backgroundColor: '#FFD86E',
@@ -202,17 +241,21 @@ export default function Register() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            opacity: loading ? 0.5 : 1,
           }}
         >
-          <Text
-            style={{
-              color: '#1F0437',
-              fontSize: 14,
-              fontWeight: '800',
-            }}
-          >
-            Criar conta
-          </Text>
+          {loading && <ActivityIndicator />}
+          {!loading && (
+            <Text
+              style={{
+                color: '#1F0437',
+                fontSize: 14,
+                fontWeight: '800',
+              }}
+            >
+              Criar conta
+            </Text>
+          )}
         </TouchableOpacity>
         <View
           style={{
@@ -223,12 +266,13 @@ export default function Register() {
             width: 300,
           }}
         >
-          <Link asChild href="/auth/login">
+          <Link disabled={loading} asChild href="/auth/login">
             <Text
               style={{
                 color: '#FFD86E',
                 fontWeight: '800',
                 fontSize: 12,
+                opacity: loading ? 0.5 : 1,
               }}
             >
               Voltar

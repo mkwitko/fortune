@@ -8,9 +8,6 @@ import {
 } from 'firebase/auth'
 import firebaseApp from '../infra/Firebase'
 import { setCache } from './Cache'
-import { verifyErrors } from './FirebaseErrors'
-
-console.log(firebaseApp)
 
 const auth = getAuth(firebaseApp)
 

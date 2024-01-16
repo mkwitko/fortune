@@ -6,6 +6,8 @@ import Authentication from '@/services/Auth'
 
 interface UserEntityContextProps {
   User: UserEntity
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const UserEntityContext = React.createContext({} as UserEntityContextProps)
@@ -17,6 +19,8 @@ export function UserEntityContextProvider({
 }) {
   const entities = Entities()
   const { auth } = Authentication()
+
+  const [loading, setLoading] = React.useState(false)
 
   const {
     User,
@@ -39,6 +43,8 @@ export function UserEntityContextProvider({
     <UserEntityContext.Provider
       value={{
         User,
+        loading,
+        setLoading,
       }}
     >
       {children}

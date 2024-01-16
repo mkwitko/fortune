@@ -1,17 +1,22 @@
 import { StoreType } from '@/data/store/StoreType'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { FontAwesome5, AntDesign } from '@expo/vector-icons'
 import { useUserEntityContext } from '@/context/UserEntityContext'
 import Payment from '@/utils/payment'
+import { useState } from 'react'
 
 export default function StoreCard({ store }: { store: StoreType }) {
   const {
     User: {
       hook: { data },
     },
+    loading,
+    setLoading,
   } = useUserEntityContext()
 
   const { initializePaymentSheet, openPaymentSheet } = Payment()
+
+  const [selfLoading, setSelfLoading] = useState(false)
 
   return (
     <View
@@ -83,14 +88,19 @@ export default function StoreCard({ store }: { store: StoreType }) {
         }}
       >
         <TouchableOpacity
-          onPress={() => {
-            initializePaymentSheet({
+          disabled={loading}
+          onPress={async () => {
+            setLoading(true)
+            setSelfLoading(true)
+            await initializePaymentSheet({
               user: data,
               amount: store.price,
               coins: store.amount,
             }).then(() => {
               openPaymentSheet()
             })
+            setLoading(false)
+            setSelfLoading(false)
           }}
           style={{
             backgroundColor: '#FFD86E',
@@ -101,17 +111,22 @@ export default function StoreCard({ store }: { store: StoreType }) {
             paddingVertical: 10,
             borderBottomLeftRadius: 15,
             borderBottomRightRadius: 15,
+            opacity: loading ? 0.5 : 1,
           }}
         >
-          <Text
-            style={{
-              color: '#1F0437',
-              fontWeight: '800',
-              fontSize: 12,
-            }}
-          >
-            {!store.isFree && `R$`} {store.price}
-          </Text>
+          {selfLoading && <ActivityIndicator />}
+          {!selfLoading && (
+            <Text
+              style={{
+                color: '#1F0437',
+                fontWeight: '800',
+                fontSize: 12,
+                opacity: loading ? 0.5 : 1,
+              }}
+            >
+              {!store.isFree && `R$`} {store.price}
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
     </View>

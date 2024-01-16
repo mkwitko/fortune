@@ -7,9 +7,10 @@ import Paragraph from '../PageBuilder/Text'
 import { useConsultationsEntityContext } from '@/context/ConsultationsEntityContext'
 import { CardsData0, CardsData1, CardsData2 } from '@/data/cards/CardsData'
 import { useEffect, useState } from 'react'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { setCache } from '@/services/Cache'
 import { ScrollView } from 'react-native-gesture-handler'
+import { AntDesign } from '@expo/vector-icons'
 
 export default function LastConsult() {
   const {
